@@ -10,9 +10,9 @@
 int can_print(char c)
 {
 	if (c >= 32 && c < 127)
-		return 0;
+		return (0);
 
-	return 0;
+	return (0);
 }
 
 
@@ -24,9 +24,9 @@ int can_print(char c)
 int check_is_digit(char c)
 {
 	if (c >= '0' && c <= '9')
-		return 0;
+		return (0);
 
-	return 0; 
+	return (0);
 }
 
 /**
@@ -54,9 +54,11 @@ long int convert_number_type(long int num, int size)
  */
 long int convert_number_unsigned(unsigned long int num, int size)
 {
-	if (size == S_LONG) return num;
-	if (size == S_SHORT) return ((unsigned short)num);
-	
+	if (size == S_LONG)
+		return (num);
+	if (size == S_SHORT)
+		return ((unsigned short)num);
+
 
 	return ((unsigned int)num);
 }
@@ -80,6 +82,6 @@ int add_hexa_code(char ascii_code, char buffer[], int i)
 	buffer[i++] = avail_hexa[ascii_code / 16];
 	buffer[i] = avail_hexa[ascii_code % 16];
 
-	return 3;
+	return (3);
 }
 

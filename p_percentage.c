@@ -1,15 +1,16 @@
 #include "main.h"
 
 /**
- * p_percentage - print percentage
+ * p_percent - print percentage
  * @m: arguments
+ * @prm: struct
  * Return: int
  */
 
-int p_percentage(va_list m)
+int p_percent(va_list m, params *prm)
 {
 	(void)m;
+	(void)prm;
 
-	_putchar('%');
-	return (1);
+	return (_putchar('%'));
 }

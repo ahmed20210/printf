@@ -74,8 +74,7 @@ i++;
 
 return (write_unsgnd(0, i, buffer, flags, width, precision, size));
 }
-umber of chars printed
- */
+
 int print_hexadecimal(va_list types, char buffer[], int flags, int width,
 		int precision, int size)
 {

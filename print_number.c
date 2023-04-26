@@ -78,8 +78,6 @@ int print_int(va_list types, char buffer[],
  * Return: Numbers of char printed.
  */
 
-
-
 int print_binary(va_list types, char buffer[],
 	int flags, int width, int precision, int size)
 {
@@ -94,16 +92,14 @@ int print_binary(va_list types, char buffer[],
 	UNUSED(size);
 
 	n = va_arg(types, unsigned int);
-	m = 2147483648; /* (2 ^ 31) */
+	m = 1u << 31; /* (2 ^ 31) */
 	a[0] = n / m;
-	i = 0;
-	while( i < 32)
+	for (i = 1; i < 32; i++)
 	{
-		m /= 2;
-		a[i] = (n / m) % 2;
-		i++;
+		m >>= 1;
+		a[i] = (n & m) ? 1 : 0;
 	}
-	for (i = sum = 0, count = 0; i < 32; i++)
+	for (i = 0, sum = 0, count = 0; i < 32; i++)
 	{
 		sum += a[i];
 		if (sum || i == 31)
@@ -114,7 +110,5 @@ int print_binary(va_list types, char buffer[],
 			count++;
 		}
 	}
-	return count;
+	return (count);
 }
-
-

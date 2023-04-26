@@ -12,12 +12,13 @@
 int calculate_precision(const char *format, int *i, va_list list)
 {
 	int precision = -1;
+	char c;
 
 	if (format[*i + 1] == '.')
 	{
 		(*i)++;
 
-		char c = format[*i + 1];
+		c = format[*i + 1];
 
 		if (c == '*')
 		{

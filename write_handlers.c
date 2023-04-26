@@ -18,6 +18,9 @@ int write_char(char c, char buffer[], int flags, int width,
 		int precision, int size)
 {
 	char padd = ' ';
+	int i;
+	(void)precision;
+	(void)size;
 
 	buffer[0] = c;
 	buffer[1] = '\0';
@@ -29,7 +32,7 @@ int write_char(char c, char buffer[], int flags, int width,
 
 	if (width > 1)
 	{
-		for (int i = 1; i < width; i++)
+		for (i = 1; i < width; i++)
 		{
 			buffer[i] = padd;
 		}
@@ -160,8 +163,9 @@ int write_unsgnd(int is_negative, int ind,
 	char buffer[],
 	int flags, int width, int precision, int size)
 {
-	int length = BUFF_SIZE - ind - 1;
+	int i, space_padding, zero_padding, length = BUFF_SIZE - ind - 1;
 	char padd = ' ';
+	char *padding_buffer;
 
 	UNUSED(is_negative);
 	UNUSED(size);
@@ -169,10 +173,10 @@ int write_unsgnd(int is_negative, int ind,
 		return (0);
 	if (precision > 0 && precision > length)
 	{
-		int zero_padding = precision - length;
+		zero_padding = precision - length;
 
 		length += zero_padding;
-		for (int i = BUFF_SIZE - 2; i >= ind; i--)
+		for (i = BUFF_SIZE - 2; i >= ind; i--)
 		{
 			if (i - zero_padding < ind)
 				buffer[i] = '0';
@@ -184,10 +188,10 @@ int write_unsgnd(int is_negative, int ind,
 		padd = '0';
 	if (width > length)
 	{
-		int space_padding = width - length;
-		char padding_buffer[space_padding + 1];
+		space_padding = width - length;
+		padding_buffer[space_padding + 1];
 
-		for (int i = 0; i < space_padding; i++)
+		for (i = 0; i < space_padding; i++)
 			padding_buffer[i] = padd;
 		padding_buffer[space_padding] = '\0';
 		if (flags & F_MINUS)

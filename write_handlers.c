@@ -165,7 +165,7 @@ int write_unsgnd(int is_negative, int ind,
 {
 	int i, space_padding, zero_padding, length = BUFF_SIZE - ind - 1;
 	char padd = ' ';
-	char *padding_buffer;
+	char *padding_buffer = "";
 
 	UNUSED(is_negative);
 	UNUSED(size);
@@ -189,7 +189,6 @@ int write_unsgnd(int is_negative, int ind,
 	if (width > length)
 	{
 		space_padding = width - length;
-		padding_buffer[space_padding + 1];
 
 		for (i = 0; i < space_padding; i++)
 			padding_buffer[i] = padd;
